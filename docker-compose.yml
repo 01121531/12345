@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  YDGPT-next-web: 
+    profiles: ["no-proxy"]
+    container_name: YDGPT-next-web
+    image: yidadaa/YDGPT-next-web
+    ports:
+      - 3000:3000
+    environment:
+      - OPENAI_API_KEY=$OPENAI_API_KEY
+      - CODE=$CODE
+      - BASE_URL=$BASE_URL
+      - OPENAI_ORG_ID=$OPENAI_ORG_ID
+      - HIDE_USER_API_KEY=$HIDE_USER_API_KEY
+      - DISABLE_GPT4=DISABLE_GPT4
+
+  YDGPT-next-web-proxy: 
+    profiles: ["proxy"]
+    container_name: YDGPT-next-web-proxy
+    image: yidadaa/YDGPT-next-web
+    ports:
+      - 3000:3000
+    environment:
+      - OPENAI_API_KEY=$OPENAI_API_KEY
+      - CODE=$CODE
+      - PROXY_URL=$PROXY_URL
+      - BASE_URL=$BASE_URL
+      - OPENAI_ORG_ID=$OPENAI_ORG_ID
+      - HIDE_USER_API_KEY=$HIDE_USER_API_KEY
+      - DISABLE_GPT4=DISABLE_GPT4
